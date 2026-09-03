@@ -1,62 +1,47 @@
-# 02 — Arguments & return
+# Arguments and Return Values
 
-## `return`
-Function se value bahar bhejne ke liye:
-
+## Parameters and Arguments
 ```python
 def add(a, b):
     return a + b
 
 result = add(10, 20)
-print(result)
 ```
+`a` and `b` are parameters. `10` and `20` are arguments.
 
-`print()` sirf display karta hai; `return` result reuse karne deta hai.
-
-## Positional Arguments
+## Default Arguments
 ```python
-def employee(name, role):
-    print(name, role)
-
-employee("Ayan", "Platform")
+def connect(host, port=443):
+    return f"{host}:{port}"
 ```
 
 ## Keyword Arguments
 ```python
-employee(role="Platform", name="Ayan")
+connect(port=8080, host="localhost")
 ```
 
-## Default Arguments
+## return
+`return` sends a value back to the caller and ends the function.
+
+## Company Use
+Functions often return structured values that other layers use.
+
+## Common Mistakes
+- Printing instead of returning when the caller needs the result
+- Mutable default arguments such as `items=[]`
+
+Safer:
 ```python
-def connect(region="ap-south-1"):
-    return region
+def add_item(item, items=None):
+    if items is None:
+        items = []
+    items.append(item)
+    return items
 ```
 
-## Multiple Return Values
-```python
-def stats(numbers):
-    return min(numbers), max(numbers)
-
-low, high = stats([4, 8, 2])
-```
-
-Python actually tuple return karta hai.
-
-## Company Example
-```python
-def calculate_total(price, quantity, tax_rate=0.18):
-    subtotal = price * quantity
-    tax = subtotal * tax_rate
-    return subtotal + tax
-```
-
-## Interview
-**`print` vs `return`?** Display vs reusable function result.
-
-**Default argument?** Caller value na de to default use hota hai.
+## Interview Questions
+1. Parameter vs argument?
+2. `print()` vs `return`?
 
 ## Practice
-1. Calculator functions.
-2. Salary annualizer.
-3. Celsius→Fahrenheit.
-4. Function returning min/max.
+Write a function that returns annual salary from monthly salary.

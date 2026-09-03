@@ -1,43 +1,38 @@
-# 03 — Inheritance & Polymorphism
+# Inheritance and Polymorphism
 
 ## Inheritance
-Child class parent ka behavior reuse karta hai.
+A child class can reuse behavior from a parent class.
 
 ```python
-class CloudResource:
-    def status(self):
-        return "unknown"
+class Service:
+    def start(self):
+        print("Starting service")
 
-class EC2Instance(CloudResource):
-    def status(self):
-        return "running"
-```
-
-## `super()`
-```python
-class Employee:
-    def __init__(self, name):
-        self.name = name
-
-class Engineer(Employee):
-    def __init__(self, name, skill):
-        super().__init__(name)
-        self.skill = skill
+class APIService(Service):
+    pass
 ```
 
 ## Polymorphism
-Same method interface, different behavior:
+Different objects can provide the same interface with different behavior.
 
 ```python
-resources = [EC2Instance()]
-for resource in resources:
-    print(resource.status())
+class LocalStorage:
+    def save(self, data):
+        print("Saved locally")
+
+class S3Storage:
+    def save(self, data):
+        print("Saved to S3")
 ```
 
-## Company Note
-Inheritance useful hai but overuse se tight coupling ho sakta hai. Composition often cleaner alternative hota hai.
+Code can call `.save()` without caring about the implementation.
 
-## Interview
-- inheritance = reuse/relationship.
-- method overriding child behavior customize karta hai.
-- polymorphism same interface different implementations.
+## Company Use
+Adapters, plugins, storage backends, payment providers, deployment targets.
+
+## Common Mistakes
+- Deep inheritance trees
+- Using inheritance only to share a few lines of code
+
+## Interview Question
+Inheritance vs composition?

@@ -1,62 +1,39 @@
-# 01 — Functions Basics
+# Functions Basics
 
-## Simple Meaning
-Function reusable block of code hai.
+Functions group reusable logic.
 
-```python
-def greet():
-    print("Hello")
-
-greet()
-```
-
-`def` function define karta hai. `greet()` function call hai.
-
-## Why Functions?
-Bad:
-```python
-print("Checking server")
-print("Checking server")
-print("Checking server")
-```
-
-Better:
-```python
-def check_server():
-    print("Checking server")
-
-check_server()
-check_server()
-```
-
-## Parameters
 ```python
 def greet(name):
-    print(f"Hello {name}")
+    print(f"Hello, {name}")
 
 greet("Ayan")
 ```
 
-`name` parameter; `"Ayan"` argument.
+## Why Functions Matter
+- Reduce repeated code
+- Make testing easier
+- Improve readability
+- Separate responsibilities
 
-## Company Use
+## Good Function Design
+Prefer small functions with one clear purpose.
+
 ```python
-def build_s3_path(bucket, key):
-    return f"s3://{bucket}/{key}"
+def calculate_total(price, quantity):
+    return price * quantity
 ```
 
-Reusable small functions testing aur maintenance easy banate hain.
+## Company Use
+Validation helpers, API logic, calculations, file processing, automation tasks.
 
-## Good Function Rule
-Ek function ideally ek clear responsibility rakhe.
+## Common Mistakes
+- Functions that do too many unrelated tasks
+- Hidden global-state changes
+- Poor names such as `do_it()`
 
-## Interview
-- Function define: `def`.
-- Parameter definition me; argument call me.
-- Function reuse, readability, testability improve karta hai.
+## Interview Questions
+1. Why use functions?
+2. What is the difference between defining and calling a function?
 
 ## Practice
-1. `say_hello()`.
-2. `greet(name)`.
-3. `square(number)`.
-4. `is_even(number)`.
+Write functions for tax calculation, email validation, and checking server health.

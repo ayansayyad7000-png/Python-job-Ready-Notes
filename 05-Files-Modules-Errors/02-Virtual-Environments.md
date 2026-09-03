@@ -1,32 +1,25 @@
-# 02 — Virtual Environments
+# Virtual Environments
 
-## Problem
-Project A ko package v1 chahiye, Project B ko v2. Global installs conflict kar sakte hain.
+A virtual environment isolates project dependencies.
 
-## Solution: venv
-Create:
+## Create
 ```bash
 python -m venv .venv
 ```
 
+## Activate
 Windows PowerShell:
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
-
 Linux/macOS:
 ```bash
 source .venv/bin/activate
 ```
 
-Install:
+Install packages inside it:
 ```bash
-pip install requests
-```
-
-Save:
-```bash
-pip freeze > requirements.txt
+python -m pip install requests
 ```
 
 Deactivate:
@@ -34,22 +27,11 @@ Deactivate:
 deactivate
 ```
 
-## `.gitignore`
-`.venv` Git me commit nahi karna:
-```text
-.venv/
-__pycache__/
-.env
-```
+## Company Use
+Different projects may require different package versions. Virtual environments prevent conflicts.
 
-## Company Workflow
-```text
-clone repo
-→ create venv
-→ activate
-→ pip install -r requirements.txt
-→ run app/tests
-```
+## Good Practice
+Do not commit `.venv/` to Git. Add it to `.gitignore`.
 
-## Interview
-Virtual environment project dependencies isolate karta hai.
+## Interview Question
+Why should each Python project have its own environment?

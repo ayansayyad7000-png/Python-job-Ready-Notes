@@ -1,65 +1,48 @@
-# 03 — *args, **kwargs, Lambda & Scope
+# *args, **kwargs, Lambda and Scope
 
-## `*args`
-Variable positional arguments:
-
+## *args
+Collects extra positional arguments.
 ```python
-def total(*numbers):
-    return sum(numbers)
-
-print(total(10, 20, 30))
+def total(*values):
+    return sum(values)
 ```
 
-Inside function `numbers` tuple hota hai.
-
-## `**kwargs`
-Variable keyword arguments:
-
+## **kwargs
+Collects extra keyword arguments.
 ```python
 def show_config(**config):
-    for key, value in config.items():
-        print(key, value)
-
-show_config(region="ap-south-1", debug=True)
+    return config
 ```
-
-Inside function `config` dict hota hai.
 
 ## Lambda
-Small anonymous function:
-
+Small anonymous function.
 ```python
 square = lambda x: x * x
-print(square(5))
 ```
-
-Common sorting example:
-```python
-users = [{"name": "A", "age": 30}, {"name": "B", "age": 20}]
-users.sort(key=lambda user: user["age"])
-```
+Use lambdas for short expressions, not complex business logic.
 
 ## Scope
+Variables can be local, enclosing, global, or built-in.
+
 ```python
-name = "Global"
+x = 10
 
 def demo():
-    name = "Local"
-    print(name)
+    x = 20
+    print(x)
 ```
 
-Local variable function ke andar limited hota hai.
+## Company Use
+Flexible utility functions, callbacks, sorting keys, adapters.
 
-Avoid unnecessary `global`; values parameters/return se pass karna cleaner hota hai.
+## Common Mistakes
+- Overusing `*args`/`**kwargs` and hiding required inputs
+- Using global variables for shared mutable state
 
-## Interview
-- `*args` → tuple of positional args.
-- `**kwargs` → dict of keyword args.
-- lambda → small anonymous function.
-- Local vs global scope.
+## Interview Questions
+1. What does `*args` collect?
+2. What does `**kwargs` collect?
+3. What is local scope?
 
 ## Practice
-1. `*args` average.
-2. `**kwargs` employee profile.
-3. Sort dict list by salary using lambda.
-4. Scope example run karo.
+Create a logging helper that accepts a message plus optional metadata using `**kwargs`.

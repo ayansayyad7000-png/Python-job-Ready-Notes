@@ -1,50 +1,35 @@
-# 03 — File Handling (TXT)
+# Text File Handling
 
-## Recommended: `with open()`
-Read:
+Use `with` so files close automatically.
+
+## Write
 ```python
-with open("notes.txt", "r", encoding="utf-8") as file:
+with open("report.txt", "w", encoding="utf-8") as file:
+    file.write("System healthy\n")
+```
+
+## Read
+```python
+with open("report.txt", "r", encoding="utf-8") as file:
     content = file.read()
 ```
 
-Write (overwrites):
+## Append
 ```python
-with open("notes.txt", "w", encoding="utf-8") as file:
-    file.write("Python\n")
+with open("app.log", "a", encoding="utf-8") as file:
+    file.write("New event\n")
 ```
-
-Append:
-```python
-with open("notes.txt", "a", encoding="utf-8") as file:
-    file.write("AWS\n")
-```
-
-## Modes
-```text
-r read
-w write/overwrite
-a append
-b binary
-```
-
-## Lines
-```python
-with open("notes.txt", encoding="utf-8") as file:
-    for line in file:
-        print(line.strip())
-```
-
-## Why `with`?
-Context manager file automatically close karta hai, even if error occurs.
 
 ## Company Use
-Config, logs, exported data, templates, small automation files.
+Configuration files, exports, simple reports, logs, batch input.
 
-## Common Mistake
-`w` existing content erase karta hai. Append ke liye `a`.
+## Common Mistakes
+- Using `w` and accidentally overwriting data
+- Forgetting encoding
+- Hard-coding fragile file paths
+
+## Interview Question
+Why is `with open(...)` preferred?
 
 ## Practice
-1. File write.
-2. Append 3 lines.
-3. Read line-by-line.
-4. Count lines/words.
+Create a script that appends one timestamped status line to a text file.

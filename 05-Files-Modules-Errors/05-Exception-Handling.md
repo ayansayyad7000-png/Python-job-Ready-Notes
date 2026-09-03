@@ -1,66 +1,41 @@
-# 05 — Exception Handling
+# Exception Handling
 
-## Problem
-Bad input program crash kar sakta hai.
+Exceptions represent runtime errors that can be handled.
 
-```python
-number = int("abc")
-```
-Raises `ValueError`.
-
-## try/except
 ```python
 try:
     age = int(input("Age: "))
 except ValueError:
-    print("Enter a valid number")
+    print("Invalid age")
 ```
 
-## else/finally
+## else and finally
 ```python
 try:
-    value = int("10")
-except ValueError:
-    print("Invalid")
+    result = 10 / 2
+except ZeroDivisionError:
+    print("Cannot divide by zero")
 else:
-    print("Success", value)
+    print(result)
 finally:
     print("Finished")
 ```
 
-- `else` only if no exception.
-- `finally` always runs.
-
-## Catch Specific Exceptions
-Good:
+## Raise Your Own Error
 ```python
-except FileNotFoundError:
-    ...
-```
-
-Avoid broad silent handling:
-```python
-except Exception:
-    pass
-```
-
-## Raise
-```python
-def set_age(age):
-    if age < 0:
-        raise ValueError("Age cannot be negative")
+def set_percentage(value):
+    if not 0 <= value <= 100:
+        raise ValueError("percentage must be between 0 and 100")
 ```
 
 ## Company Use
-API, file, database, network calls fail ho sakte hain. Graceful handling + logging important hai.
+APIs, database operations, file access, network requests, input validation.
 
-## Interview
-- Exception runtime error/event hai.
-- Specific exceptions catch karo.
-- `finally` cleanup ke liye useful.
+## Common Mistakes
+- `except Exception: pass`
+- Hiding errors instead of logging or handling them
+- Catching exceptions too broadly
 
-## Practice
-1. Safe integer input.
-2. File not found handle.
-3. Division by zero handle.
-4. Negative salary par raise.
+## Interview Questions
+1. `try` / `except` / `else` / `finally` roles?
+2. When should you raise an exception?

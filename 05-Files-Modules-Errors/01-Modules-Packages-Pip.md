@@ -1,7 +1,7 @@
-# 01 — Modules, Packages & pip
+# Modules, Packages and pip
 
 ## Module
-Ek `.py` file jisme reusable code ho.
+A Python file that can be imported.
 
 `math_utils.py`:
 ```python
@@ -9,64 +9,42 @@ def add(a, b):
     return a + b
 ```
 
-`app.py`:
+`main.py`:
 ```python
 from math_utils import add
 print(add(2, 3))
 ```
 
-## Import Styles
-```python
-import math
-from math import sqrt
-import math as m
-```
-
-Avoid wildcard in production:
-```python
-from module import *
-```
-
 ## Package
-Related modules ka folder, often package structure me `__init__.py` hota hai.
+A directory containing related modules.
+
+```text
+app/
+├── main.py
+└── utils/
+    ├── __init__.py
+    └── validators.py
+```
 
 ## pip
-Third-party packages install:
+Installs third-party packages.
 ```bash
-pip install requests
+python -m pip install requests
+python -m pip list
 ```
 
-List:
+Save dependencies:
 ```bash
-pip list
+python -m pip freeze > requirements.txt
 ```
-
-Freeze:
-```bash
-pip freeze > requirements.txt
-```
-
-Install project dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-## `if __name__ == "__main__"`
-```python
-def main():
-    print("App started")
-
-if __name__ == "__main__":
-    main()
-```
-
-File directly run ho to `main()` execute; import hone par automatically nahi.
 
 ## Company Use
-Projects modules/packages me divide hote hain: `api`, `services`, `utils`, `models`.
+Real applications are split into modules and packages instead of one huge file.
 
-## Interview
-- module = Python file.
-- package = modules ka package/folder.
-- pip = package installer.
-- requirements.txt dependencies record karta hai.
+## Common Mistakes
+- Circular imports
+- Installing packages globally
+- Importing everything with `from module import *`
+
+## Interview Question
+Module vs package?

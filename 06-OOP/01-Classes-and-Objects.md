@@ -1,39 +1,36 @@
-# 01 — Classes & Objects
+# Classes and Objects
 
-## Simple Meaning
-Class blueprint hai; object us blueprint ka instance.
+A class defines a type. An object is an instance of that class.
 
 ```python
 class Server:
     pass
 
-server1 = Server()
+server = Server()
 ```
 
-## Real Example
-```python
-class Employee:
-    def greet(self):
-        print("Hello from employee")
+## Why OOP Exists
+OOP groups data and behavior that belong together.
 
-employee = Employee()
-employee.greet()
+Example concept:
+```text
+Server
+├── name
+├── region
+├── status
+└── restart()
 ```
-
-`self` current object ko represent karta hai.
-
-## Why OOP?
-Related data + behavior ko ek structure me organize karta hai.
 
 ## Company Use
-Users, orders, cloud resources, API clients, services, models ko classes se model kiya ja sakta hai.
+Domain models, service clients, SDK wrappers, configuration objects, reusable components.
 
-## Interview
-- class = blueprint.
-- object = class instance.
-- `self` current instance.
+## Common Mistakes
+- Using classes for tiny problems that simple functions solve better
+- Creating "god classes" with too many responsibilities
+
+## Interview Questions
+1. Class vs object?
+2. When is OOP useful?
 
 ## Practice
-1. `Car` class.
-2. `Server` class.
-3. Method add karo.
+Create a `User` class and instantiate two users.

@@ -1,7 +1,7 @@
-# 04 — Encapsulation & Abstraction
+# Encapsulation and Abstraction
 
 ## Encapsulation
-Internal state ko controlled methods/properties ke through manage karna.
+Keep internal details behind a clear interface.
 
 ```python
 class Account:
@@ -10,34 +10,24 @@ class Account:
 
     def deposit(self, amount):
         if amount <= 0:
-            raise ValueError("Amount must be positive")
+            raise ValueError("amount must be positive")
         self._balance += amount
 ```
 
-Python me `_name` convention means internal/protected-like use.
-
-## Property
-```python
-class Account:
-    def __init__(self, balance):
-        self._balance = balance
-
-    @property
-    def balance(self):
-        return self._balance
-```
+Python uses conventions such as `_name` for internal attributes.
 
 ## Abstraction
-User ko simple interface do, internal complexity hide karo.
+Expose what callers need while hiding implementation details.
 
-Example:
-```python
-client.upload("report.csv")
-```
-Caller ko underlying HTTP/auth steps jaana zaroori nahi.
+Example: a caller uses `storage.save(data)` without knowing whether storage is local disk or S3.
 
 ## Company Use
-Service classes, SDK wrappers, repositories, API clients.
+Stable interfaces allow implementations to change without rewriting every caller.
 
-## Interview
-Encapsulation state/control organize karta hai; abstraction unnecessary implementation detail hide karta hai.
+## Common Mistakes
+- Treating `_private` as strict security; it is a convention
+- Exposing internal mutable state unnecessarily
+
+## Interview Questions
+1. What is encapsulation?
+2. What is abstraction?

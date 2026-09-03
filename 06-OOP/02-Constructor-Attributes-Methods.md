@@ -1,43 +1,37 @@
-# 02 — Constructor, Attributes & Methods
+# Constructor, Attributes and Methods
 
-## `__init__`
-Object creation ke time initialize:
+`__init__` initializes a new object.
 
 ```python
-class Employee:
-    def __init__(self, name, role):
+class Server:
+    def __init__(self, name, region):
         self.name = name
-        self.role = role
+        self.region = region
+        self.status = "stopped"
 
-    def describe(self):
-        return f"{self.name} - {self.role}"
+    def start(self):
+        self.status = "running"
 
-employee = Employee("Ayan", "Platform")
-print(employee.describe())
+server = Server("api-1", "ap-south-1")
+server.start()
 ```
+
+## self
+`self` refers to the current instance.
 
 ## Instance Attributes
-`self.name`, `self.role` har object ki values ho sakti hain.
+`self.name` and `self.status` can differ between objects.
 
-## Class Attribute
-```python
-class Employee:
-    company = "ExampleCorp"
-```
+## Company Use
+Objects can hold state and expose safe operations on that state.
 
-Shared class-level data.
+## Common Mistakes
+- Forgetting `self`
+- Putting unrelated behavior in one class
 
-## Method Types First Look
-- instance method → `self`
-- class method → `cls`
-- static method → neither instance nor class state required
+## Interview Questions
+1. What does `__init__` do?
+2. What is `self`?
 
-```python
-class Math:
-    @staticmethod
-    def add(a, b):
-        return a + b
-```
-
-## Interview
-`__init__` initializer method hai, object state setup karta hai.
+## Practice
+Build an `Employee` class with a method that calculates annual salary.
