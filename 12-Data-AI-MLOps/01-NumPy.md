@@ -1,51 +1,41 @@
-# 01 — NumPy Basics
+# NumPy Basics
+
+NumPy provides fast numerical arrays and vectorized operations.
 
 Install:
 ```bash
-pip install numpy
+python -m pip install numpy
 ```
 
-## Array
 ```python
 import numpy as np
 
-values = np.array([10, 20, 30])
-print(values)
-print(values.dtype)
-print(values.shape)
+values = np.array([10, 20, 30, 40])
+print(values.mean())
+print(values * 2)
 ```
 
-## Vectorized Operations
-```python
-values = np.array([1, 2, 3])
-print(values * 10)
-```
-
-No manual loop needed for many numeric operations.
-
-## 2D
+## Shapes
 ```python
 matrix = np.array([[1, 2], [3, 4]])
 print(matrix.shape)
-print(matrix[:, 0])
-```
-
-## Useful
-```python
-np.mean(values)
-np.sum(values)
-np.min(values)
-np.max(values)
 ```
 
 ## Boolean Filtering
 ```python
-cpu = np.array([40, 92, 70, 99])
-print(cpu[cpu >= 90])
+high = values[values >= 30]
 ```
 
-## Company Use
-Numerical processing, ML features, matrix/data operations.
+## Why NumPy Matters
+Operations on arrays are usually clearer and faster than Python loops for numerical workloads.
 
-## Important
-NumPy arrays generally homogeneous numeric computation ke liye optimized hote hain.
+## Company Use
+Feature processing, scientific computing, ML preprocessing, metrics calculations.
+
+## Common Mistakes
+- Confusing element-wise multiplication with matrix multiplication
+- Ignoring array shapes and broadcasting rules
+
+## Interview Questions
+1. Why use NumPy instead of plain lists for numeric arrays?
+2. What is broadcasting?

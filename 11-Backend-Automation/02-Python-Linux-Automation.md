@@ -1,53 +1,44 @@
-# 02 — Python + Linux Automation
+# Python + Linux Automation
 
-## pathlib
-```python
-from pathlib import Path
+Python is widely used to automate system tasks.
 
-for file in Path("logs").glob("*.log"):
-    print(file)
-```
-
-## subprocess
-External command safely run:
+## Run Commands Safely
 ```python
 import subprocess
 
 result = subprocess.run(
-    ["python", "--version"],
+    ["systemctl", "is-active", "nginx"],
     capture_output=True,
     text=True,
-    check=True,
+    check=False,
 )
-print(result.stdout or result.stderr)
+
+print(result.stdout.strip())
 ```
 
-Prefer argument list over `shell=True` for untrusted input.
+Prefer argument lists over `shell=True` for untrusted input.
 
-## Environment
-```python
-import os
-region = os.getenv("AWS_REGION")
-```
-
-## Automation Pattern
-```text
-read config
-→ validate
-→ perform task
-→ handle exception
-→ log result
-→ return exit status
-```
-
-## Example: Old Log Finder
+## File Automation
 ```python
 from pathlib import Path
 
-for path in Path("logs").glob("*.log"):
-    if path.stat().st_size == 0:
-        print(f"Empty log: {path}")
+for path in Path("/var/log").glob("*.log"):
+    print(path)
+```
+
+## Environment Variables
+```python
+import os
+region = os.getenv("AWS_REGION", "ap-south-1")
 ```
 
 ## Company Use
-CI utilities, deployment helpers, file cleanup, health checks, data movement.
+Deployment helpers, health checks, cleanup jobs, backup scripts, CI/CD utilities.
+
+## Common Mistakes
+- Building shell commands from user input
+- Ignoring command exit codes
+- Running scripts with unnecessary root privileges
+
+## Interview Question
+Why is `subprocess.run([...])` often safer than building a shell command string?

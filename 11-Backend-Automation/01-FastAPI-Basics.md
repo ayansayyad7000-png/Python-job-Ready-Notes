@@ -1,63 +1,56 @@
-# 01 — FastAPI Basics
+# FastAPI Basics
 
-## Goal
-Python se typed REST API banana.
+FastAPI is a modern framework for building APIs with Python type hints.
 
-## Install
-Virtual environment ke andar:
-
+Install:
 ```bash
-pip install "fastapi[standard]"
+python -m pip install "fastapi[standard]"
 ```
 
-## First API — `main.py`
+`main.py`:
 ```python
 from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 ```
 
-Development server:
+Run:
 ```bash
 fastapi dev main.py
 ```
 
-If using a `uv` managed project, FastAPI CLI can be run through `uv run`.
-
 Open:
 ```text
-http://127.0.0.1:8000
+http://127.0.0.1:8000/health
 http://127.0.0.1:8000/docs
 ```
 
-`/docs` automatic interactive Swagger UI deta hai.
-
-## Path Parameter
-```python
-@app.get("/users/{user_id}")
-def get_user(user_id: int):
-    return {"user_id": user_id}
-```
-
-## Request Body
+## Request Data
 ```python
 from pydantic import BaseModel
 
-class UserCreate(BaseModel):
+class User(BaseModel):
     name: str
     age: int
 
 @app.post("/users")
-def create_user(user: UserCreate):
+def create_user(user: User):
     return user
 ```
 
-## Company Structure
-Routes → services → database/client layers separate rakho as app grows.
+## Company Use
+Internal services, model-serving APIs, backend systems, platform tooling.
 
-## Production Thinking
-Validation, auth, logging, errors, tests, config, DB connection lifecycle important hain.
+## Common Mistakes
+- Putting all business logic inside route functions
+- No input validation
+- Blocking work inside async endpoints
+
+## Interview Questions
+1. Why is FastAPI popular?
+2. What does Pydantic provide?
+3. What is automatic API documentation?

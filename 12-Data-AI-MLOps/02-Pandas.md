@@ -1,54 +1,45 @@
-# 02 — Pandas Basics
+# Pandas Basics
+
+Pandas is used for tabular data processing.
 
 Install:
 ```bash
-pip install pandas
+python -m pip install pandas
 ```
 
-## DataFrame
 ```python
 import pandas as pd
 
-df = pd.DataFrame({
-    "server": ["api-1", "api-2"],
-    "cpu": [45, 92],
-})
-```
-
-## CSV
-```python
-df = pd.read_csv("metrics.csv")
-df.to_csv("clean.csv", index=False)
-```
-
-## Inspect
-```python
+df = pd.read_csv("employees.csv")
 print(df.head())
-print(df.info())
-print(df.describe())
+print(df.columns)
 ```
 
-## Select / Filter
+## Select and Filter
 ```python
-print(df["cpu"])
-critical = df[df["cpu"] >= 90]
+active = df[df["active"] == True]
+selected = df[["name", "salary"]]
 ```
 
-## Missing Values
+## Missing Data
 ```python
-df.isna().sum()
-df = df.dropna()
-# or
-df["cpu"] = df["cpu"].fillna(0)
+print(df.isna().sum())
+df["salary"] = df["salary"].fillna(0)
 ```
 
-## Group
+## Grouping
 ```python
-summary = df.groupby("environment")["cpu"].mean()
+summary = df.groupby("team")["salary"].mean()
 ```
 
 ## Company Use
-ETL, reports, experiment/model data, analysis, batch pipelines.
+Reports, ETL, data validation, ML datasets, analytics, experiment data.
 
-## Practice
-Load CSV → clean missing values → filter critical rows → save new CSV.
+## Common Mistakes
+- Loading extremely large datasets without considering memory
+- Chained assignment confusion
+- Modifying raw data without keeping a reproducible pipeline
+
+## Interview Questions
+1. Series vs DataFrame?
+2. What does `groupby()` do?

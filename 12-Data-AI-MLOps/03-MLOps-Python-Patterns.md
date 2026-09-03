@@ -1,56 +1,50 @@
-# 03 — Python Patterns for MLOps / AI Platforms
+# MLOps-Oriented Python Patterns
 
-MLOps me sirf model training nahi; reliable software practices bhi important hain.
+MLOps code should be reproducible, configurable, testable, and observable.
 
-## 1. Config Outside Code
+## Configuration-Driven Code
 ```python
-import os
-MODEL_PATH = os.getenv("MODEL_PATH", "models/model.pkl")
+from dataclasses import dataclass
+
+@dataclass
+class TrainConfig:
+    learning_rate: float
+    epochs: int
+    model_name: str
 ```
 
-## 2. Typed Input
-```python
-def predict(features: list[float]) -> float:
-    ...
-```
+Avoid scattering constants across files.
 
-## 3. Separate Responsibilities
+## Separate Pipeline Stages
 ```text
-data loading
-feature transform
-model loading
-prediction
-API serving
-logging/metrics
+data ingestion
+→ validation
+→ preprocessing
+→ training
+→ evaluation
+→ packaging
+→ deployment
+→ monitoring
 ```
 
-## 4. Model Load Once
-Long-running service me har request par model reload avoid karo unless design requires it.
+## Reproducibility
+Record:
+- package versions
+- dataset/version identifiers
+- model parameters
+- metrics
+- code commit
 
-```python
-class ModelService:
-    def __init__(self, model):
-        self.model = model
+## Logging and Errors
+Use structured logs and fail clearly when data is invalid.
 
-    def predict(self, features):
-        return self.model.predict([features])[0]
-```
+## Cloud Pattern
+Keep AWS-specific code behind small functions or service classes so business logic remains testable.
 
-## 5. Validate Inputs
-Missing/wrong feature types handle karo before model call.
+## Company Use
+Training pipelines, model serving, batch inference, feature workflows, platform automation.
 
-## 6. Observability
-Log:
-- request/result metadata (non-sensitive)
-- latency
-- errors
-- model version
-
-## 7. Reproducibility
-Dependency versions, model version, config, code revision track karo.
-
-## 8. Tests
-Test preprocessing, edge cases, API behavior, model wrapper.
-
-## AI Platform Mindset
-Model ko production service ki tarah treat karo: secure, observable, testable, repeatable.
+## Interview Questions
+1. What makes an ML workflow reproducible?
+2. Why separate configuration from code?
+3. Why track model and data versions?

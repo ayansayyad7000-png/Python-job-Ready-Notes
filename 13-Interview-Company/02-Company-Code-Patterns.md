@@ -1,6 +1,6 @@
-# 02 — Company-Style Python Patterns
+# Company-Style Python Patterns
 
-## Pattern 1 — Validate Early
+## 1. Validate Inputs Early
 ```python
 def create_user(name: str) -> dict:
     clean_name = name.strip()
@@ -9,42 +9,42 @@ def create_user(name: str) -> dict:
     return {"name": clean_name}
 ```
 
-## Pattern 2 — Separate Config
+## 2. Keep Configuration Outside Business Logic
 ```python
-import os
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+API_URL = os.getenv("API_URL")
 ```
 
-## Pattern 3 — Specific Errors
-Catch expected exceptions, log context, don't silently ignore.
+## 3. Use Small Service Functions
+```python
+def calculate_total(items):
+    return sum(item["price"] for item in items)
+```
 
-## Pattern 4 — Small Layers
+## 4. Handle External Failures
+Network, database, cloud, and file operations can fail. Add timeouts, clear exceptions, retries only where appropriate, and useful logs.
+
+## 5. Keep Secrets Out of Git
+Use environment variables, IAM roles, or secret managers.
+
+## 6. Write Tests Around Important Behavior
+Test business rules and error cases, not only happy paths.
+
+## 7. Separate Layers
 ```text
-route/controller
-→ service/business logic
-→ repository/client
-→ external DB/API
+API / CLI
+→ service logic
+→ data/cloud clients
+→ external systems
 ```
 
-## Pattern 5 — Dependency Injection Idea
-Function/class ko dependency parameter me do instead of globally create karna. Testing easy hota hai.
+## 8. Make Operations Observable
+Use logs, metrics, health checks, and meaningful error messages.
 
-```python
-def get_status(client, server_id):
-    return client.fetch_status(server_id)
-```
-
-## Pattern 6 — Return Data, Don't Randomly Print
-Business functions result return kare; UI/CLI layer display kare.
-
-## Pattern 7 — Logging
-Important actions/errors log; secrets never log.
-
-## Pattern 8 — Tests for Behavior
-Happy path + invalid input + edge cases.
-
-## Pattern 9 — Idempotency Thinking
-Automation ko repeat run karne par unexpected duplicate/damage na ho where possible.
-
-## Pattern 10 — Readability
-Clever one-liners se better clear code.
+## Review Checklist
+- Clear names?
+- Inputs validated?
+- Errors handled?
+- Secrets protected?
+- Tests present?
+- Function too large?
+- External dependency isolated?

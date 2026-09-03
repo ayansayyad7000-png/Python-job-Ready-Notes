@@ -1,69 +1,44 @@
-# 03 — Job-Ready Mini Projects
+# Job-Ready Python Mini Projects
 
-## Project 1 — CLI Expense Tracker
+Build these in order. Put each project in its own repository when it becomes substantial.
+
+## 1. CLI Expense Tracker
 Skills: functions, files/JSON, validation, exceptions.
 
-Features:
-- add expense
-- list expenses
-- category totals
-- save JSON
+## 2. Employee Management API
+Use FastAPI + SQLite.
+Skills: REST, validation, CRUD, SQL, testing.
 
-## Project 2 — Log Analyzer
-Skills: files, regex, dict, generators.
+## 3. Server Health Monitor
+Read CPU/memory values, classify status, write logs, create reports.
+Skills: Linux automation, logging, functions.
 
-Features:
-- count ERROR/WARNING
-- extract IP/request IDs
-- top error messages
+## 4. S3 Backup Tool
+Upload selected files to S3 using boto3.
+Skills: AWS SDK, IAM, file handling, errors.
 
-## Project 3 — REST API Client
-Skills: requests, config, logging, retry thinking.
+## 5. CSV Data Cleaning Pipeline
+Use Pandas to validate and clean a dataset.
+Skills: Pandas, data quality, reporting.
 
-Features:
-- fetch API data
-- validate response
-- save CSV/JSON
+## 6. Async API Collector
+Fetch several APIs concurrently with proper timeouts and error handling.
+Skills: asyncio, HTTP, JSON.
 
-## Project 4 — Employee API with FastAPI
-Skills: type hints, Pydantic, routes, tests.
+## 7. Model Serving API
+Load a simple trained model and expose `/predict` and `/health` endpoints.
+Skills: FastAPI, validation, model lifecycle basics.
 
-Features:
-- create/list/get employees
-- validation
+## 8. MLOps Job Runner
+Configuration-driven script that records run ID, parameters, status, logs, and output path.
+
+## For Every Project Include
+- README
+- setup steps
+- `.gitignore`
+- dependency file
+- clean folder structure
+- sample config
+- tests
 - error handling
-- `/docs`
-
-## Project 5 — Python + SQL CRUD App
-Skills: SQLite/PostgreSQL concepts, parameterized queries, transactions.
-
-## Project 6 — AWS S3 Automation
-Skills: boto3, IAM role, logging, pathlib.
-
-Features:
-- upload reports
-- list prefix
-- download object
-- safe errors
-
-## Project 7 — Server Health Monitor
-Skills: requests/subprocess, concurrency, logging.
-
-## Project 8 — Data Cleaning Pipeline
-Skills: Pandas, files, config, tests.
-
-## Project 9 — Model Inference API
-Skills: FastAPI, typed input, model service pattern, logging.
-
-## Portfolio Rule
-Har project me:
-```text
-README
-setup steps
-requirements
-clean structure
-sample input/output
-error handling
-tests
-no secrets
-```
+- screenshots or example output where useful

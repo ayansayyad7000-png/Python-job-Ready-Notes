@@ -1,13 +1,13 @@
-# 03 — AWS Automation with boto3
+# AWS Automation with boto3
 
-## Install
+`boto3` is the AWS SDK for Python.
+
+Install:
 ```bash
-pip install boto3
+python -m pip install boto3
 ```
 
-On EC2 prefer IAM Role instead of hardcoded access keys.
-
-## S3 Client
+## List S3 Buckets
 ```python
 import boto3
 
@@ -18,32 +18,29 @@ for bucket in response.get("Buckets", []):
     print(bucket["Name"])
 ```
 
-## Upload File
+## Upload a File
 ```python
-s3.upload_file("report.csv", "my-bucket", "reports/report.csv")
+s3.upload_file("report.txt", "my-bucket", "reports/report.txt")
 ```
 
-## Download File
+## Credentials
+Prefer IAM roles or workload identities. Do not hard-code access keys.
+
+## Error Handling
 ```python
-s3.download_file("my-bucket", "reports/report.csv", "report.csv")
+from botocore.exceptions import ClientError
 ```
+Catch specific AWS errors when you can handle them meaningfully.
 
-## Handle Errors
-```python
-from botocore.exceptions import BotoCoreError, ClientError
+## Company Use
+Cloud automation, platform tooling, resource inventory, deployment workflows, MLOps pipelines.
 
-try:
-    s3.list_buckets()
-except (BotoCoreError, ClientError) as exc:
-    print(f"AWS error: {exc}")
-```
+## Common Mistakes
+- Hard-coded credentials
+- Broad IAM permissions
+- No pagination for large API results
 
-## Company Thinking
-- IAM least privilege
-- region/config externalize
-- retries/timeouts where relevant
-- log resource identifiers, never secrets
-- test wrappers instead of mixing boto3 everywhere
-
-## Practice
-Build function `upload_report(local_path, bucket, key)` with logging and exception handling.
+## Interview Questions
+1. What is boto3?
+2. Why prefer IAM roles?
+3. Why does pagination matter?
