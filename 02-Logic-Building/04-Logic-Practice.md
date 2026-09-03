@@ -1,47 +1,24 @@
-# 04 — Logic Building Practice
+# Logic Building Practice
 
-## Problems
-1. Even/odd checker.
-2. Largest of 3 numbers.
-3. Grade calculator.
-4. Login check with username/password.
-5. 1–100 sum using loop.
-6. Multiplication table.
-7. Count vowels in a word.
-8. Find first number divisible by 7 from 1–100.
-9. Skip all negative values in a list and sum only valid values.
-10. Menu loop: `1 Add`, `2 View`, `3 Exit`.
+Solve these using conditions and loops.
 
-## Company-Style Problem — Health Status
-Given:
+1. Even or odd number
+2. Largest of three numbers
+3. Grade calculator
+4. Login access checker
+5. Print numbers 1 to 100 divisible by 3
+6. Count failed jobs in a status list
+7. Stop reading values when `"exit"` appears
+8. Skip negative numbers with `continue`
+9. Retry an operation at most three times
+10. Find the first CPU value above 90
 
+## Mini Project — Server Health Checker
+Given a list of CPU values:
 ```python
-cpu = 82
-memory = 61
-service_up = True
+cpu_values = [22, 55, 91, 44, 87]
 ```
+Print `WARNING` for values >= 80 and `CRITICAL` for values >= 90.
 
-Rules:
-- service down → `CRITICAL`
-- CPU >= 90 or memory >= 90 → `CRITICAL`
-- CPU >= 75 or memory >= 75 → `WARNING`
-- otherwise → `HEALTHY`
-
-Write clean `if/elif/else` logic.
-
-## Self Check
-- [ ] if/elif/else
-- [ ] nested condition
-- [ ] for loop
-- [ ] while loop
-- [ ] range
-- [ ] break
-- [ ] continue
-- [ ] pass
-
-## Interview Rapid Fire
-1. `range(1,5)` output?
-2. Infinite loop kya hai?
-3. `break` vs `continue`?
-4. Multiple `if` vs `elif`?
-5. Loop me counter update kyu important hai?
+## Interview Focus
+Be able to explain loop choice, condition order, and how you avoid infinite loops.

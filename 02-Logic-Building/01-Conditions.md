@@ -1,89 +1,37 @@
-# 01 — Conditions: if, elif, else
+# Conditions: if, elif, else
 
-## Simple Meaning
-Condition program ko decision lene deti hai.
-
-```python
-age = 21
-
-if age >= 18:
-    print("Adult")
-else:
-    print("Minor")
-```
-
-## Flow
-```text
-condition True? → if block
-otherwise       → else block
-```
-
-## `elif`
-Multiple conditions ke liye:
+Conditions run code only when a rule is true.
 
 ```python
-marks = 72
+score = 82
 
-if marks >= 90:
+if score >= 90:
     grade = "A"
-elif marks >= 75:
+elif score >= 75:
     grade = "B"
-elif marks >= 60:
-    grade = "C"
 else:
-    grade = "D"
+    grade = "C"
 
 print(grade)
 ```
 
-## Nested Condition
+## Multiple Conditions
 ```python
-is_active = True
-role = "admin"
-
-if is_active:
-    if role == "admin":
-        print("Full access")
+if is_active and role == "admin":
+    print("Access granted")
 ```
 
-Nested logic useful hai, but bahut deep nesting avoid karo.
-
-## Company Example
-```python
-status_code = 200
-
-if 200 <= status_code < 300:
-    print("Request successful")
-elif status_code == 404:
-    print("Resource not found")
-else:
-    print("Request failed")
-```
+## Company Use
+Permissions, validation, pricing rules, retries, feature flags, and workflow decisions.
 
 ## Common Mistakes
-- `=` ki jagah `==` comparison me use karo.
-- Colon `:` mat bhoolo.
-- Indentation correct rakho.
-- Conditions ka order important hai.
+- Incorrect condition order
+- Deeply nested `if` blocks
+- Using `== True` unnecessarily
 
-## Interview
-**Q. `if` aur `elif` me difference?**  
-`if` first condition start karta hai; `elif` additional conditions check karta hai.
-
-**Q. Multiple `if` vs `if/elif`?**  
-Multiple `if` sab independently check hote hain. `elif` chain me first true branch ke baad remaining skip hote hain.
+## Interview Questions
+1. When should `elif` be used?
+2. What is short-circuit evaluation?
 
 ## Practice
-1. Number positive/negative/zero.
-2. Age based eligibility.
-3. Marks to grade.
-4. Username + password simple check.
-5. Environment `dev/staging/prod` message.
-
-## Quick Revision
-```text
-if = first condition
-elif = another condition
-else = fallback
-comparison = == != > < >= <=
-```
+Build a login decision using username, password status, and account-active status.

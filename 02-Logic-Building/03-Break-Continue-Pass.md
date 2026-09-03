@@ -1,70 +1,36 @@
-# 03 — break, continue, pass
+# break, continue and pass
 
-## `break`
-Loop ko immediately stop karta hai.
-
+## break
+Stops the loop.
 ```python
-for number in range(1, 10):
-    if number == 5:
+for n in range(10):
+    if n == 5:
         break
-    print(number)
 ```
 
-Output: `1 2 3 4`.
-
-## `continue`
-Current iteration skip karta hai, loop continue hota hai.
-
+## continue
+Skips the current iteration.
 ```python
-for number in range(1, 6):
-    if number == 3:
+for n in range(5):
+    if n == 2:
         continue
-    print(number)
+    print(n)
 ```
 
-Output me `3` skip hoga.
-
-## `pass`
-Placeholder hai—kuch nahi karta.
-
+## pass
+A placeholder that does nothing.
 ```python
 def future_feature():
     pass
 ```
 
-## Company Example
-Invalid records skip:
+## Company Use
+- `break`: stop searching after a match
+- `continue`: skip invalid records
+- `pass`: temporary placeholder during development
 
-```python
-records = [10, None, 30]
-
-total = 0
-for value in records:
-    if value is None:
-        continue
-    total += value
-
-print(total)
-```
-
-Search milte hi stop:
-
-```python
-users = ["rahul", "ayan", "sameer"]
-
-for user in users:
-    if user == "ayan":
-        print("Found")
-        break
-```
-
-## Interview
-- `break` → loop stop.
-- `continue` → current iteration skip.
-- `pass` → no-op placeholder.
+## Common Mistake
+Using `pass` when `continue` or `break` was intended.
 
 ## Practice
-1. 1–20 me 10 par break.
-2. Odd numbers skip karo.
-3. Empty function with `pass`.
-4. List me first negative number find karke stop.
+Loop over records, skip inactive users, and stop after finding an administrator.

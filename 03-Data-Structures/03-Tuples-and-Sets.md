@@ -1,64 +1,33 @@
-# 03 — Tuples & Sets
+# Tuples and Sets
 
-# Tuple
-Ordered and immutable collection.
-
+## Tuple
+Ordered and immutable.
 ```python
-coordinates = (19.07, 72.87)
+point = (10, 20)
+```
+Useful for fixed records or values that should not change.
+
+## Set
+Unordered collection of unique values.
+```python
+skills = {"Python", "AWS", "Python"}
+print(skills)
 ```
 
-Access:
+Useful operations:
 ```python
-print(coordinates[0])
-```
-
-Unpacking:
-```python
-lat, lon = coordinates
-```
-
-Use tuple jab values logically fixed hon.
-
-# Set
-Unique unordered collection.
-
-```python
-services = {"EC2", "S3", "EC2"}
-print(services)
-```
-
-Duplicate remove ho jayega.
-
-## Set Methods
-```python
-services.add("Lambda")
-services.discard("S3")
-```
-
-## Set Operations
-```python
-a = {"Python", "AWS", "SQL"}
-b = {"Python", "Linux"}
-
-print(a & b)  # intersection
-print(a | b)  # union
-print(a - b)  # difference
+a | b   # union
+a & b   # intersection
+a - b   # difference
 ```
 
 ## Company Use
-Duplicate IDs remove:
-```python
-user_ids = [101, 101, 102, 103]
-unique_ids = set(user_ids)
-```
+- Tuple: fixed coordinates, configuration pairs, immutable records
+- Set: remove duplicates, fast membership checks, compare permissions
 
-## Interview
-- tuple immutable; list mutable.
-- set unique values rakhta hai.
-- set indexing support nahi karta.
+## Interview Questions
+1. List vs tuple?
+2. Why use a set?
 
 ## Practice
-1. List duplicates remove.
-2. Two skill sets common values.
-3. Tuple unpack.
-4. Union/intersection run karo.
+Find common skills between two teams using set intersection.
