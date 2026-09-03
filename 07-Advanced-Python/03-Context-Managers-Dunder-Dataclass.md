@@ -1,29 +1,20 @@
-# 03 — Context Managers, Dunder Methods & dataclass
+# Context Managers, Dunder Methods and dataclass
 
 ## Context Manager
-Resource setup/cleanup safely manage karta hai.
+`with` manages setup and cleanup.
 
 ```python
-with open("data.txt") as file:
-    print(file.read())
+with open("data.txt", encoding="utf-8") as file:
+    data = file.read()
 ```
 
-`with` ke baad file automatically close.
-
-Custom context manager usually `__enter__` / `__exit__` implement karta hai.
+Custom context managers can implement `__enter__` and `__exit__`.
 
 ## Dunder Methods
-Special methods like:
-```text
-__init__
-__str__
-__repr__
-__len__
-__eq__
-```
+Special methods such as `__str__`, `__len__`, and `__eq__` integrate objects with Python syntax.
 
 ```python
-class Server:
+class Service:
     def __init__(self, name):
         self.name = name
 
@@ -32,19 +23,23 @@ class Server:
 ```
 
 ## dataclass
-Boilerplate reduce:
+Useful for data-focused classes.
 
 ```python
 from dataclasses import dataclass
 
 @dataclass
-class Employee:
+class Server:
     name: str
-    role: str
-    salary: float = 0.0
+    cpu: float
 ```
 
-Auto-generated init/repr/equality useful hain.
-
 ## Company Use
-Data models, config objects, DTO-like structures.
+Resource management, domain records, clean model objects.
+
+## Interview Questions
+1. Why use a context manager?
+2. When is `dataclass` useful?
+
+## Practice
+Create a `Deployment` dataclass with service, version, and environment.

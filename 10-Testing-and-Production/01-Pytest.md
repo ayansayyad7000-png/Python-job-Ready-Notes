@@ -1,11 +1,11 @@
-# 01 — Testing with pytest
+# pytest
 
 Install:
 ```bash
-pip install pytest
+python -m pip install pytest
 ```
 
-Code:
+Function:
 ```python
 def add(a, b):
     return a + b
@@ -19,37 +19,32 @@ def test_add():
 
 Run:
 ```bash
-pytest
-```
-
-## Arrange-Act-Assert
-```python
-def test_discount():
-    # Arrange
-    price = 100
-
-    # Act
-    result = apply_discount(price, 10)
-
-    # Assert
-    assert result == 90
-```
-
-## Exceptions
-```python
-import pytest
-
-with pytest.raises(ValueError):
-    set_age(-1)
+pytest -q
 ```
 
 ## Fixtures
-Reusable test setup:
+Fixtures prepare reusable test data or resources.
+
 ```python
+import pytest
+
 @pytest.fixture
-def sample_user():
-    return {"name": "Ayan"}
+def user():
+    return {"id": 1, "active": True}
 ```
 
 ## Company Use
-CI pipelines tests run karte hain before merge/deploy.
+Regression prevention, CI/CD gates, safe refactoring.
+
+## Good Tests
+- Fast
+- Independent
+- Clear
+- Deterministic
+
+## Common Mistakes
+- Testing implementation details instead of behavior
+- Tests that depend on execution order
+
+## Interview Question
+Unit test vs integration test?

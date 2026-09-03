@@ -1,55 +1,43 @@
-# 02 — Environment Variables & Config
+# Environment Variables and Configuration
 
-## Why?
-Secrets/settings code me hardcode nahi karne.
+Do not hard-code secrets or environment-specific values in source code.
 
-Bad:
-```python
-API_KEY = "real-secret"
-```
-
-Environment:
 ```python
 import os
 
 api_key = os.getenv("API_KEY")
-region = os.getenv("AWS_REGION", "ap-south-1")
+environment = os.getenv("APP_ENV", "dev")
 ```
 
-Required setting:
-```python
-if not api_key:
-    raise RuntimeError("API_KEY is required")
-```
+## .env Files
+For local development, projects often use a `.env` file with a library such as `python-dotenv`.
 
-## `.env`
-Local development me `.env` common hai, but Git me commit nahi karna.
-
-`.gitignore`:
 ```text
-.env
-.venv/
+API_URL=https://example.com
+APP_ENV=dev
 ```
 
-With `python-dotenv`:
-```bash
-pip install python-dotenv
-```
-
-```python
-from dotenv import load_dotenv
-load_dotenv()
-```
+Never commit real secrets.
 
 ## Config Pattern
+Keep configuration separate from business logic.
+
 ```python
 from dataclasses import dataclass
-import os
 
 @dataclass
 class Settings:
-    region: str = os.getenv("AWS_REGION", "ap-south-1")
+    environment: str
+    api_url: str
 ```
 
 ## Company Use
-Dev/staging/prod differences, credentials, endpoints, feature flags.
+Different values for local, test, staging, and production environments.
+
+## Common Mistakes
+- Committing `.env`
+- Printing secrets in logs
+- Using one giant unvalidated config dictionary
+
+## Interview Question
+Why should secrets come from environment variables or a secret manager?

@@ -1,53 +1,33 @@
-# 01 — Python + SQL with SQLite
+# Python + SQLite CRUD
 
-SQLite Python standard library me available hai.
+SQLite is useful for learning SQL integration and small local applications.
 
 ```python
 import sqlite3
 
-connection = sqlite3.connect("company.db")
-cursor = connection.cursor()
+with sqlite3.connect("app.db") as conn:
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)"
+    )
+    conn.execute("INSERT INTO users(name) VALUES (?)", ("Ayan",))
+
+    rows = conn.execute("SELECT id, name FROM users").fetchall()
+    print(rows)
 ```
 
-Create table:
-```python
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS employees (
-    id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL,
-    role TEXT NOT NULL
-)
-""")
-connection.commit()
-```
+## CRUD
+- Create: `INSERT`
+- Read: `SELECT`
+- Update: `UPDATE`
+- Delete: `DELETE`
 
-Insert safely:
-```python
-cursor.execute(
-    "INSERT INTO employees (name, role) VALUES (?, ?)",
-    ("Ayan", "Platform"),
-)
-connection.commit()
-```
+## Company Use
+The same application patterns apply to PostgreSQL/MySQL through different drivers or ORMs.
 
-Read:
-```python
-cursor.execute("SELECT id, name, role FROM employees")
-for row in cursor.fetchall():
-    print(row)
-```
+## Common Mistakes
+- Building SQL with f-strings
+- Forgetting transactions
+- Mixing database logic everywhere in the codebase
 
-Update/Delete:
-```python
-cursor.execute("UPDATE employees SET role=? WHERE id=?", ("AI Platform", 1))
-cursor.execute("DELETE FROM employees WHERE id=?", (1,))
-connection.commit()
-```
-
-Close:
-```python
-connection.close()
-```
-
-## Company Note
-Production may use PostgreSQL/MySQL + ORM, but CRUD/transaction concepts same foundation hain.
+## Interview Question
+What does CRUD stand for?

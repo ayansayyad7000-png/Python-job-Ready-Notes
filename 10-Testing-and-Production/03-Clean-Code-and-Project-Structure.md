@@ -1,53 +1,42 @@
-# 03 — Clean Code & Project Structure
+# Clean Code and Project Structure
 
-## Naming
-```python
-monthly_salary = 50000
-```
-Better than:
-```python
-ms = 50000
-```
+## Principles
+- Clear names
+- Small focused functions
+- One responsibility per module
+- Explicit error handling
+- Minimal duplication
+- Useful type hints
+- Tests for important behavior
 
-## Small Functions
-One clear responsibility.
-
-## Avoid Magic Numbers
-Bad:
-```python
-if retries > 3:
-```
-Better:
-```python
-MAX_RETRIES = 3
-if retries > MAX_RETRIES:
-```
-
-## Typical Project
+## Example Structure
 ```text
 project/
+├── pyproject.toml
+├── README.md
 ├── src/
 │   └── app/
 │       ├── __init__.py
 │       ├── main.py
-│       ├── services.py
-│       └── config.py
-├── tests/
-├── requirements.txt
-├── .gitignore
-└── README.md
+│       ├── config.py
+│       └── services.py
+└── tests/
+    └── test_services.py
 ```
+
+## Dependency Files
+Modern projects often use `pyproject.toml`; some still use `requirements.txt`.
 
 ## PEP 8
-Python style conventions: readable spacing, naming, line organization.
+PEP 8 is Python's style guide. Automated formatters and linters help enforce consistency.
 
-## Tools
-```text
-ruff   linting
-black  formatting
-pytest testing
-mypy   type checking
-```
+## Company Use
+Good structure makes onboarding, testing, deployment, and ownership easier.
 
-## Company Mindset
-Readable code > clever code. Handle errors, add tests, document public behavior, don't commit secrets.
+## Common Mistakes
+- Huge `main.py`
+- Business logic mixed with database/network code
+- Secrets committed to Git
+
+## Interview Question
+What makes code maintainable?

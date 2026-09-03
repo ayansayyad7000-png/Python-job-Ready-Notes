@@ -1,45 +1,35 @@
-# 05 — Threading & Multiprocessing
-
-## Why Concurrency?
-Ek program multiple tasks ko efficiently handle kar sake.
+# Threading and Multiprocessing
 
 ## Threading
-I/O-bound tasks (network/file waiting) ke liye useful.
+Useful mainly for I/O-bound work such as waiting on files, APIs, or networks.
 
 ```python
 from concurrent.futures import ThreadPoolExecutor
 
+def fetch(item):
+    return item
 
-def check(url):
-    return f"checked {url}"
-
-urls = ["a", "b", "c"]
-with ThreadPoolExecutor(max_workers=3) as pool:
-    results = list(pool.map(check, urls))
+with ThreadPoolExecutor(max_workers=4) as pool:
+    results = list(pool.map(fetch, range(10)))
 ```
 
 ## Multiprocessing
-CPU-heavy work ko separate processes me run kar sakta hai.
+Useful for CPU-heavy work because separate processes can run Python code independently.
 
 ```python
 from concurrent.futures import ProcessPoolExecutor
-
-
-def square(n):
-    return n * n
-
-if __name__ == "__main__":
-    with ProcessPoolExecutor() as pool:
-        print(list(pool.map(square, range(5))))
 ```
 
-## Important Thinking
-- I/O-bound → threads/async often useful.
-- CPU-bound → process pool often useful.
-- Shared state/race conditions se careful.
-
 ## Company Use
-Parallel API calls, batch jobs, CPU transforms.
+Parallel API calls, file processing, CPU-heavy transformations, worker jobs.
 
-## Interview
-Concurrency = overlapping tasks. Parallelism = tasks literally same time multiple cores/resources par execute ho sakte hain.
+## Key Idea
+Choose based on workload, not because parallelism looks faster.
+
+## Common Mistakes
+- Sharing mutable state across threads without care
+- Creating too many workers
+- Using multiprocessing for tiny tasks where overhead dominates
+
+## Interview Question
+When would you choose threads vs processes?

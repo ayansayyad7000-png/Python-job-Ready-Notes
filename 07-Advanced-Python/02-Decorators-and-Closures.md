@@ -1,7 +1,7 @@
-# 02 — Decorators & Closures
+# Decorators and Closures
 
 ## Closure
-Inner function outer variable remember kar sakta hai.
+A nested function can remember values from its enclosing scope.
 
 ```python
 def multiplier(factor):
@@ -10,35 +10,36 @@ def multiplier(factor):
     return multiply
 
 double = multiplier(2)
-print(double(5))
 ```
 
 ## Decorator
-Function ko wrap karke behavior add karta hai.
+A decorator wraps a function to add behavior.
 
 ```python
+from functools import wraps
+
 def log_call(func):
+    @wraps(func)
     def wrapper(*args, **kwargs):
         print(f"Calling {func.__name__}")
         return func(*args, **kwargs)
     return wrapper
 
 @log_call
-def add(a, b):
-    return a + b
-```
-
-Better metadata preserve:
-```python
-from functools import wraps
-
-@wraps(func)
-def wrapper(...):
-    ...
+def process():
+    return "done"
 ```
 
 ## Company Use
-Logging, authentication, timing, retries, caching, API frameworks.
+Authentication, logging, timing, caching, retries, framework routing.
 
-## Interview
-Decorator callable ko wrap/modify karta hai without original function body changing.
+## Common Mistakes
+- Forgetting `functools.wraps`
+- Hiding too much behavior inside decorators
+
+## Interview Questions
+1. What is a closure?
+2. What does a decorator return?
+
+## Practice
+Create a decorator that prints execution time.

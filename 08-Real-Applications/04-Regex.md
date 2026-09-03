@@ -1,39 +1,40 @@
-# 04 — Regular Expressions (Regex)
+# Regular Expressions (Regex)
 
-## Simple Meaning
-Text pattern search/validation.
+Regex matches patterns in text.
 
 ```python
 import re
 
-text = "Order ID: 12345"
-match = re.search(r"\d+", text)
-print(match.group())
+text = "error code 503"
+match = re.search(r"\d{3}", text)
+if match:
+    print(match.group())
 ```
 
-## Common Tokens
-```text
-\d digit
-\w word char
-\s whitespace
-. any char
-+ one or more
-* zero or more
-^ start
-$ end
-```
-
-## Find All
+## Common Functions
 ```python
-numbers = re.findall(r"\d+", "cpu=80 memory=65")
+re.search()
+re.match()
+re.findall()
+re.sub()
 ```
 
-## Simple Email-Like Check
+## Raw Strings
+Regex patterns usually use raw strings:
 ```python
-pattern = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
+pattern = r"\d+"
 ```
-
-Regex useful hai, but complex validation ke liye specialized libraries better ho sakti hain.
 
 ## Company Use
-Logs parsing, IDs extraction, text cleanup, validation.
+Log parsing, validation, extracting IDs, cleaning text.
+
+## Common Mistakes
+- Using regex for problems a simple string method solves better
+- Overly complex patterns that nobody can maintain
+
+## Interview Questions
+1. `search()` vs `match()`?
+2. Why use raw strings?
+
+## Practice
+Extract all IPv4-like values from a log string, then validate them separately.

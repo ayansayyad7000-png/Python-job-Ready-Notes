@@ -1,46 +1,36 @@
-# 06 — Async Python with asyncio
+# asyncio and async/await
 
-## Simple Meaning
-`asyncio` `async` / `await` syntax se concurrent I/O code likhne ka standard-library framework hai.
+`asyncio` is Python's standard framework for asynchronous I/O.
 
 ```python
 import asyncio
 
-async def main():
-    print("start")
+async def task(name):
     await asyncio.sleep(1)
-    print("done")
-
-asyncio.run(main())
-```
-
-## Coroutine
-`async def` function call coroutine object return karta hai; use await/run karna hota hai.
-
-## Concurrent Tasks
-```python
-import asyncio
-
-async def fetch(name, delay):
-    await asyncio.sleep(delay)
     return name
 
 async def main():
-    results = await asyncio.gather(
-        fetch("api-1", 1),
-        fetch("api-2", 1),
-    )
+    results = await asyncio.gather(task("a"), task("b"))
     print(results)
 
 asyncio.run(main())
 ```
 
-## Best Fit
-Network I/O, many connections, async APIs, non-blocking workflows.
+## Key Terms
+- `async def`: defines a coroutine
+- `await`: waits without blocking the event loop
+- `asyncio.gather()`: runs multiple awaitables concurrently
 
-CPU-heavy calculation ke liye async alone magic speed-up nahi deta.
+## Company Use
+High-concurrency APIs, network clients, event-driven services, many simultaneous I/O operations.
 
-## Interview
-- `async def` coroutine function.
-- `await` async operation complete hone tak cooperative pause.
-- event loop tasks schedule karta hai.
+## Common Mistakes
+- Calling blocking code inside async functions
+- Forgetting `await`
+- Using async when simple synchronous code is enough
+
+## Interview Question
+Concurrency vs parallelism?
+
+## Practice
+Run three async tasks with different delays and collect their results.

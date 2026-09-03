@@ -1,48 +1,36 @@
-# 03 — Logging
+# Logging
 
-## Why Not Only `print()`?
-Logging level, timestamp, module, file output aur production observability deta hai.
+Use logging instead of `print()` for production diagnostics.
 
 ```python
 import logging
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
-)
-
-logging.info("Application started")
-logging.warning("CPU is high")
-logging.error("Request failed")
-```
-
-## Levels
-```text
-DEBUG
-INFO
-WARNING
-ERROR
-CRITICAL
-```
-
-Module logger:
-```python
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+logger.info("Service started")
+logger.warning("CPU is high")
+logger.error("Request failed")
 ```
 
-Exception traceback:
+## Log Levels
+`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`
+
+## Include Context
 ```python
-try:
-    1 / 0
-except ZeroDivisionError:
-    logger.exception("Calculation failed")
+logger.info("Processing user_id=%s", user_id)
 ```
-
-## Security
-Passwords, tokens, secret keys logs me mat print karo.
 
 ## Company Use
-CloudWatch, ELK, Datadog etc. logs collect kar sakte hain.
+Troubleshooting, monitoring, audit trails, incident response.
 
-## Interview
-Logging structured operational information deta hai; level-based filtering possible hai.
+## Security
+Never log passwords, API keys, tokens, or sensitive personal data.
+
+## Common Mistakes
+- Logging every detail at `INFO`
+- Swallowing exceptions without logs
+- Using string concatenation for expensive log messages
+
+## Interview Question
+Why is logging better than print statements in production?

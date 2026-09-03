@@ -1,50 +1,36 @@
-# 05 — Date/Time, pathlib & OS
+# Date/Time, pathlib and OS Tools
 
-# datetime
+## datetime
 ```python
 from datetime import datetime, timezone
 
 now = datetime.now(timezone.utc)
 print(now.isoformat())
 ```
+Prefer timezone-aware datetimes for distributed systems.
 
-Parse:
-```python
-created = datetime.strptime("2026-09-03", "%Y-%m-%d")
-```
-
-Format:
-```python
-created.strftime("%d-%m-%Y")
-```
-
-Production systems me timezone awareness important hai.
-
-# pathlib
+## pathlib
 ```python
 from pathlib import Path
 
-path = Path("data") / "report.csv"
-print(path.exists())
+path = Path("reports") / "daily.txt"
+path.parent.mkdir(exist_ok=True)
+path.write_text("ok", encoding="utf-8")
 ```
 
-Create folder:
-```python
-Path("logs").mkdir(exist_ok=True)
-```
-
-List files:
-```python
-for file in Path("data").glob("*.csv"):
-    print(file)
-```
-
-# os
-Environment/process-related utilities:
+## os
 ```python
 import os
-print(os.getenv("HOME"))
+print(os.getenv("APP_ENV"))
 ```
 
 ## Company Use
-File automation, timestamped reports, scheduled jobs, config paths.
+Log rotation, report filenames, file automation, environment access, cleanup scripts.
+
+## Common Mistakes
+- Using naive local timestamps in distributed systems
+- Building paths manually with string concatenation
+
+## Interview Questions
+1. Why use `pathlib`?
+2. Why are timezone-aware timestamps safer?

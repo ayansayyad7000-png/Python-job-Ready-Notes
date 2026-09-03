@@ -1,37 +1,32 @@
-# 02 — Mocking & Debugging
+# Mocking and Debugging
 
 ## Mocking
-External dependency ko fake/control karna, so test network/DB par depend na ho.
+Replace external dependencies during a test.
 
 ```python
 from unittest.mock import Mock
 
 client = Mock()
-client.get_status.return_value = "running"
-assert client.get_status() == "running"
+client.get_user.return_value = {"id": 1}
 ```
 
-`pytest` + `monkeypatch` bhi common hai.
+Mock network calls, cloud SDKs, email services, or slow dependencies when appropriate.
 
 ## Debugging
-First tools:
+Useful tools:
 ```python
-print(value)
+print(variable)          # quick local check
+breakpoint()             # built-in debugger
 ```
-But professional workflow:
-- read traceback bottom-up
-- inspect variable types/values
-- reproduce smallest failing case
-- debugger breakpoint use karo
-- logs check karo
+Also use IDE breakpoints, logs, stack traces, and focused tests.
 
-Built-in debugger:
-```python
-breakpoint()
-```
+## Company Habit
+Reproduce the bug first, isolate the smallest failing case, then fix and add a regression test.
 
-## Traceback Habit
-Error type + exact line identify karo before random code changes.
+## Common Mistakes
+- Mocking everything, producing unrealistic tests
+- Ignoring the full exception traceback
 
-## Company Use
-Mocks reliable tests; debugger/logs production issues diagnose karne me help.
+## Interview Questions
+1. Why mock an external API?
+2. What is a regression test?

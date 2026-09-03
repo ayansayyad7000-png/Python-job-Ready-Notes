@@ -1,51 +1,43 @@
-# 01 — Requests & REST APIs
-
-## HTTP Basics
-Common methods:
-```text
-GET    read
-POST   create/send
-PUT    replace
-PATCH  partial update
-DELETE remove
-```
+# Requests and REST APIs
 
 Install:
 ```bash
-pip install requests
+python -m pip install requests
 ```
 
-GET:
+## GET Request
 ```python
 import requests
 
-response = requests.get("https://api.example.com/users", timeout=10)
+response = requests.get("https://api.example.com/items", timeout=10)
 response.raise_for_status()
 data = response.json()
 ```
 
-POST:
+## POST Request
 ```python
 payload = {"name": "Ayan"}
-response = requests.post("https://api.example.com/users", json=payload, timeout=10)
+response = requests.post(
+    "https://api.example.com/users",
+    json=payload,
+    timeout=10,
+)
 ```
 
-## Important Production Habits
-- always use timeout
-- check status/errors
-- don't hardcode secrets
-- validate response fields
-
-```python
-try:
-    response = requests.get(url, timeout=10)
-    response.raise_for_status()
-except requests.RequestException as exc:
-    print(f"Request failed: {exc}")
-```
-
-## Status Codes
-`2xx` success, `4xx` client issue, `5xx` server issue.
+## Production Habits
+- Set timeouts
+- Handle request errors
+- Check status codes
+- Validate returned data
+- Never hard-code secrets
 
 ## Company Use
-Internal services, SaaS APIs, automation, model endpoints.
+Service-to-service communication, automation, integrations, cloud APIs.
+
+## Interview Questions
+1. GET vs POST?
+2. Why use a timeout?
+3. What does `raise_for_status()` do?
+
+## Practice
+Call a public JSON API and print selected fields safely.

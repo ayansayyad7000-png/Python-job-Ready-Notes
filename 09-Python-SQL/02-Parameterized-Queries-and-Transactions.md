@@ -1,40 +1,33 @@
-# 02 — Safe Queries & Transactions
+# Parameterized Queries and Transactions
 
-## Never Build SQL With User String Concatenation
-Bad:
+## Safe Query
+Never concatenate untrusted input into SQL.
+
+Wrong:
 ```python
-query = "SELECT * FROM users WHERE name='" + name + "'"
+query = f"SELECT * FROM users WHERE name = '{name}'"
 ```
 
-SQL injection risk.
-
-Use parameters:
+Better:
 ```python
 cursor.execute("SELECT * FROM users WHERE name = ?", (name,))
 ```
 
-Different DB libraries placeholder style change kar sakti hain.
+Different database drivers use different placeholder styles.
 
-## Transaction
-Related operations all succeed or all rollback.
+## Transactions
+A transaction groups operations that should succeed or fail together.
 
 ```python
-try:
-    cursor.execute("UPDATE accounts SET balance=balance-100 WHERE id=?", (1,))
-    cursor.execute("UPDATE accounts SET balance=balance+100 WHERE id=?", (2,))
-    connection.commit()
-except Exception:
-    connection.rollback()
-    raise
+with sqlite3.connect("app.db") as conn:
+    conn.execute("UPDATE accounts SET balance = balance - ? WHERE id = ?", (100, 1))
+    conn.execute("UPDATE accounts SET balance = balance + ? WHERE id = ?", (100, 2))
 ```
 
-## Company Concepts
-- parameterized query
-- transaction
-- commit
-- rollback
-- connection lifecycle
-- indexes/query performance (SQL topic)
+## Company Use
+Payments, inventory, account changes, reliable multi-step writes.
 
-## Interview
-Parameterized queries values ko SQL code se separate rakh kar injection risk reduce karti hain.
+## Interview Questions
+1. Why parameterize SQL?
+2. What is a transaction?
+3. What is rollback?

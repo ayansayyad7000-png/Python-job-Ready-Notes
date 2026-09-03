@@ -1,42 +1,36 @@
-# 04 — Type Hints
+# Type Hints
 
-## Simple Meaning
-Type hints code ka expected data type document karte hain.
+Type hints document expected types and help static analysis tools.
 
 ```python
-def add(a: int, b: int) -> int:
-    return a + b
+def calculate_total(price: float, quantity: int) -> float:
+    return price * quantity
 ```
 
-Python runtime automatically enforce nahi karta, but IDE/static tools help karte hain.
-
-## Common Types
+## Collections
 ```python
-names: list[str] = ["Ayan"]
-config: dict[str, str] = {"region": "ap-south-1"}
+def active_names(users: list[dict[str, object]]) -> list[str]:
+    return [str(u["name"]) for u in users if u.get("active")]
 ```
 
-Optional:
+## Optional Values
 ```python
-def find_user(user_id: int) -> str | None:
+def find_user(user_id: int) -> dict | None:
     ...
 ```
 
-## Typed Collections / Models
-```python
-from dataclasses import dataclass
+## Why Companies Use Them
+- Better editor support
+- Easier code review
+- Earlier bug detection with tools such as mypy or pyright
+- Clearer API contracts
 
-@dataclass
-class Server:
-    name: str
-    cpu: float
-```
+## Important
+Python does not enforce most hints at runtime automatically.
 
-## Tools
-Static type checker example: `mypy` / IDE analysis.
+## Common Mistakes
+- Treating type hints as runtime validation
+- Adding extremely complex types that reduce readability
 
-## Company Use
-Large codebase readability, refactoring safety, API contracts.
-
-## Interview
-Type hints annotations hain; Python dynamic language hi rehta hai.
+## Interview Question
+Do type hints change Python into a statically typed language?

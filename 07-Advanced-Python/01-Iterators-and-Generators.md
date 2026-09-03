@@ -1,50 +1,37 @@
-# 01 — Iterators & Generators
+# Iterators and Generators
 
 ## Iterator
-Iterator ek object hai jisse values one-by-one milti hain.
+An iterator produces values one at a time.
 
 ```python
-numbers = iter([10, 20, 30])
-print(next(numbers))
-print(next(numbers))
+values = iter([10, 20, 30])
+print(next(values))
 ```
 
-`for` loop internally iteration protocol use karta hai.
+Objects used in `for` loops follow the iterator protocol.
 
 ## Generator
-Generator lazy values produce karta hai using `yield`.
+A generator uses `yield` to produce values lazily.
 
 ```python
-def count_up_to(limit):
-    n = 1
-    while n <= limit:
-        yield n
-        n += 1
-
-for n in count_up_to(3):
-    print(n)
+def read_batches(items, size):
+    for i in range(0, len(items), size):
+        yield items[i:i + size]
 ```
 
-## Why Useful?
-Large data ko memory me ek saath load karne ki zarurat nahi.
-
-```python
-def read_large_file(path):
-    with open(path, encoding="utf-8") as file:
-        for line in file:
-            yield line.strip()
-```
-
-## Generator Expression
-```python
-squares = (n * n for n in range(1_000_000))
-```
+## Why Generators Matter
+They avoid loading every result into memory at once.
 
 ## Company Use
-Large logs, CSV rows, streaming records, pipelines.
+Large files, database batches, streaming data, paginated APIs, ETL pipelines.
 
-## Interview
-- iterable can produce iterator.
-- iterator supports `next()`.
-- generator uses `yield` and lazy evaluation.
-- list usually eager; generator memory-efficient.
+## Common Mistakes
+- Expecting a generator to be reusable after it is exhausted
+- Converting a huge generator to `list()` unnecessarily
+
+## Interview Questions
+1. `return` vs `yield`?
+2. Iterable vs iterator?
+
+## Practice
+Write a generator that yields log lines containing `ERROR`.
