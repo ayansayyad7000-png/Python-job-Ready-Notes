@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=28&duration=2200&pause=650&color=3776AB&center=true&vCenter=true&repeat=true&width=900&lines=Python+Job-Ready+Notes;Zero+%E2%86%92+Intermediate+%E2%86%92+Advanced;Python+%2B+SQL+%2B+Backend+%2B+Automation;Interview+%2B+Company-Ready+Practice" alt="Python Job Ready Notes animated header" />
+
 # 🐍 Python Job-Ready Notes
 
 ### Basic → Intermediate → Advanced → Company-Ready Python
@@ -7,12 +9,50 @@
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Level](https://img.shields.io/badge/Level-Beginner%20to%20Advanced-238636?style=for-the-badge)
 ![Focus](https://img.shields.io/badge/Focus-Job%20Ready-111827?style=for-the-badge)
+![SQL](https://img.shields.io/badge/Python%20%2B%20SQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![Automation](https://img.shields.io/badge/Automation-DevOps-0A66C2?style=for-the-badge&logo=githubactions&logoColor=white)
 
 **Simple notes • Practical code • Interview questions • Company use-cases • Practice tasks**
 
 ### 🚀 [START HERE — OPEN COMPLETE COURSE INDEX](COURSE-INDEX.md)
 
 </div>
+
+---
+
+## 🚀 Start Here
+
+This repository is arranged in a fixed learning order. Start from **Module 01** and move forward one module at a time.
+
+```text
+Python Basics
+    ↓
+Logic Building
+    ↓
+Data Structures
+    ↓
+Functions
+    ↓
+Files + Modules + Errors
+    ↓
+OOP
+    ↓
+Advanced Python
+    ↓
+Real Applications
+    ↓
+Python + SQL
+    ↓
+Testing + Production
+    ↓
+Backend + Automation
+    ↓
+Data + AI + MLOps
+    ↓
+Interview + Company Ready
+```
+
+> **Golden Rule:** Read the files in order, type the code yourself, change values, create errors, fix them, and only then move ahead.
 
 ---
 
@@ -30,8 +70,6 @@ The target is not only to remember syntax. The target is to understand:
 - how to write clean and reusable code
 - interview questions related to the topic
 - practice problems and mini projects
-
-> **Golden Rule:** Read the files in order, type the code yourself, change values, create errors, fix them, and only then move ahead.
 
 ---
 
@@ -149,6 +187,10 @@ Do not rush to advanced Python before basics, logic, data structures and functio
 
 ---
 
+<div align="center">
+
+<img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=600&size=16&duration=1900&pause=650&color=58A6FF&center=true&vCenter=true&repeat=true&width=760&lines=Learn+%E2%86%92+Code+%E2%86%92+Practice+%E2%86%92+Interview;Python+for+Real+Engineering+Work" alt="Python study animation" />
+
 ## 👨‍💻 Author
 
 **Ayan Sayyad**  
@@ -156,3 +198,5 @@ B.Tech Information Technology
 AI Platform Engineering · AWS · Linux · DevOps · MLOps · Python · SQL
 
 > Learning Python for real engineering work — one concept at a time.
+
+</div>
